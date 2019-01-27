@@ -29,13 +29,13 @@ describe("7. About Applying What We Have Learnt", () => {
         if (!hasMushrooms) productsICanEat.push(products[i]);
       }
     }
-
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", () => {
 
     let productsICanEat = [];
+    
 
     /* solve using filter() & some() / every() */
 
@@ -55,7 +55,7 @@ describe("7. About Applying What We Have Learnt", () => {
       return FILL_ME_IN;
     };
     largestPalidrome();
-    
+
     expect(largestPalidrome()).toBe(906609);
   });
 

@@ -28,15 +28,15 @@ describe("4. About Mutability", () => {
     };
 
     let aPerson = new Person ("John", "Smith");
-    console.log(aPerson)
-    expect(aPerson.getFullName()).toBe(undefined);
+
+    expect(aPerson.getFullName()).toBe("undefined undefined");
 
     aPerson.getFullName = () => {
       return this.lastname + ", " + this.firstname;
     };
 
 
-    expect(aPerson.getFullName()).toBe(undefined);
+    expect(aPerson.getFullName()).toBe("undefined, undefined");
   });
 
   it("should know that variables inside a constructor and constructor args are private", () => {

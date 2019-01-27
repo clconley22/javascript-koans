@@ -100,7 +100,6 @@ describe("5. About Higher Order Functions", () => {
       return string.join(" ");
     };
 
-console.log(jadenCase("How can mirrors be real if our eyes aren't real"))
     expect(jadenCase("How can mirrors be real if our eyes aren't real")).toEqual("How Can Mirrors Be Real If Our Eyes Aren't Real");
   });
 
@@ -122,7 +121,6 @@ console.log(jadenCase("How can mirrors be real if our eyes aren't real"))
       });
     };
 
-    console.log(myMap([1,2,3], (i) => i + 2))
     expect(myMap([1,2,3], (i) => i + 2)).toEqual([3,4,5]);
   });
 });

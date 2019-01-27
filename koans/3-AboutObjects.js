@@ -8,12 +8,12 @@ describe("3. About Objects", () => {
     });
 
     it("should confirm objects are collections of properties", () => {
-      expect(megalomaniac.mastermind).toBe(FILL_ME_IN);
+      expect(megalomaniac.mastermind).toBe("Joker");
     });
 
     it("should confirm that properties are case sensitive", () => {
-      expect(megalomaniac.henchwoman).toBe(FILL_ME_IN);
-      expect(megalomaniac.henchWoman).toBe(FILL_ME_IN);
+      expect(megalomaniac.henchwoman).toBe("Harley");
+      expect(megalomaniac.henchWoman).toBe(undefined);
     });
   });
 
@@ -29,7 +29,8 @@ describe("3. About Objects", () => {
     };
 
     const battleCry = megalomaniac.battleCry(4);
-    expect(FILL_ME_IN).toMatch(battleCry);
+
+    expect("They are Pinky and the Brain Brain Brain Brain").toMatch(battleCry);
   });
 
   it("should confirm that when a function is attached to an object, 'this' refers to the object", () => {
@@ -39,25 +40,25 @@ describe("3. About Objects", () => {
       mastermind: "James Wood",
       henchman: "Adam West",
       birthYear: 1970,
-      calculateAge: () => {
+      calculateAge: function() {
         return currentYear - this.birthYear;
       }
     };
 
-    expect(currentYear).toBe(FILL_ME_IN);
-    expect(megalomaniac.calculateAge()).toBe(FILL_ME_IN);
+    expect(currentYear).toBe(2019);
+    expect(megalomaniac.calculateAge()).toBe(49);
   });
 
   it("should know that properties can be added and deleted", () => {
     const megalomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
 
-    expect(megalomaniac["secretary"]).toBe(FILL_ME_IN);
+    expect(megalomaniac["secretary"]).toBe(undefined);
 
     megalomaniac.secretary = "Agent Smith";
-    expect(megalomaniac["secretary"]).toBe(FILL_ME_IN);
+    expect(megalomaniac["secretary"]).toBe("Agent Smith");
 
     delete megalomaniac.henchman;
-    expect(megalomaniac["henchman"]).toBe(FILL_ME_IN);
+    expect(megalomaniac["henchman"]).toBe(undefined);
   });
 
 
@@ -70,19 +71,20 @@ describe("3. About Objects", () => {
     let colouredCircle = new Circle(5);
     colouredCircle.colour = "red";
 
-    expect(simpleCircle.colour).toBe(FILL_ME_IN);
-    expect(colouredCircle.colour).toBe(FILL_ME_IN);
+    expect(simpleCircle.colour).toBe(undefined);
+    expect(colouredCircle.colour).toBe("red");
 
     Circle.prototype.describe = () => {
       return "This circle has a radius of: " + this.radius;
     };
 
-    expect(simpleCircle.describe()).toBe(FILL_ME_IN);
-    expect(colouredCircle.describe()).toBe(FILL_ME_IN);
+
+    expect(simpleCircle.describe()).toBe("This circle has a radius of: undefined");
+    expect(colouredCircle.describe()).toBe("This circle has a radius of: undefined");
   });
 
   it("should create your own simple object", () => {
-    const myNewObject = FILL_ME_IN;
+    const myNewObject = { prop1 : "a property!", prop2: [4, 3, 2], prop3: () => {return "a property that is a method!"} };
 
     expect(myNewObject.prop1).toEqual("a property!");
     expect(myNewObject.prop2).toEqual([4,3,2]);

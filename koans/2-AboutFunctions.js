@@ -4,7 +4,7 @@ describe("2. About Functions", () => {
       return a + b;
     }
 
-    expect(add(1, 2)).toBe(FILL_ME_IN);
+    expect(add(1, 2)).toBe(3);
   });
 
   it("should know internal variables override outer variables", () => {
@@ -19,9 +19,9 @@ describe("2. About Functions", () => {
       return message;
     }
 
-    expect(getMessage()).toBe(FILL_ME_IN);
-    expect(overrideMessage()).toBe(FILL_ME_IN);
-    expect(message).toBe(FILL_ME_IN);
+    expect(getMessage()).toBe("Outer");
+    expect(overrideMessage()).toBe("Inner");
+    expect(message).toBe("Outer");
   });
 
   it("should have lexical scoping", () => {
@@ -33,7 +33,7 @@ describe("2. About Functions", () => {
       }
       return childfunction();
     }
-    expect(parentfunction()).toBe(FILL_ME_IN);
+    expect(parentfunction()).toBe("local");
   });
 
   it("should use lexical scoping to synthesise functions", () => {
@@ -48,39 +48,39 @@ describe("2. About Functions", () => {
     const mysteryFunction3 = makeMysteryFunction(3);
     const mysteryFunction5 = makeMysteryFunction(5);
 
-    expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(FILL_ME_IN);
+    expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(23);
   });
 
   it("should allow extra function arguments", () => {
-    const returnFirstArg = firstArg => {
-      return firstArg;
-    }
+   const returnFirstArg = firstArg => {
+     return firstArg;
+   }
 
-    expect(returnFirstArg("first", "second", "third")).toBe(FILL_ME_IN);
+   expect(returnFirstArg("first", "second", "third")).toBe("first");
 
-    const returnSecondArg = (firstArg, secondArg) => {
-      return secondArg;
-    }
+   const returnSecondArg = (firstArg, secondArg) => {
+     return secondArg;
+   }
 
-    expect(returnSecondArg("only give first arg")).toBe(FILL_ME_IN);
+   expect(returnSecondArg("only give first arg")).toBe(undefined);
 
-    const returnAllArgs = () => {
-      let argsArray = [];
-      for (let i = 0; i < arguments.length; i += 1) {
-        argsArray.push(arguments[i]);
-      }
-      return argsArray.join(",");
-    }
+    const returnAllArgs = (...arguments) => {
+     let argsArray = [];
+     for (let i = 0; i < arguments.length; i += 1) {
+       argsArray.push(arguments[i]);
+     }
+     return argsArray.join(",");
+   }
 
-    expect(returnAllArgs("first", "second", "third")).toBe(FILL_ME_IN);
-  });
+   expect(returnAllArgs("first", "second", "third")).toBe("first", "second", "third");
+ });
 
   it("should return undefined if no return value is specified", () => {
     const returnsUndefined = () => {
 
     }
 
-    expect(returnsUndefined()).toBe(FILL_ME_IN);
+    expect(returnsUndefined()).toBe(undefined);
   });
 
   it("should pass functions as values", () => {
@@ -93,10 +93,10 @@ describe("2. About Functions", () => {
     };
 
     const praiseSinger = { givePraise: appendRules };
-    expect(praiseSinger.givePraise("John")).toBe(FILL_ME_IN);
+    expect(praiseSinger.givePraise("John")).toBe("John rules!");
 
     praiseSinger.givePraise = appendDoubleRules;
-    expect(praiseSinger.givePraise("Mary")).toBe(FILL_ME_IN);
+    expect(praiseSinger.givePraise("Mary")).toBe("Mary totally rules!");
   });
 
   it("can use a function that returns a function", () =>{
@@ -107,8 +107,8 @@ describe("2. About Functions", () => {
       };
     };
 
-    expect(myFunc()()).toEqual(FILL_ME_IN);
-    expect( typeof myFunc() ).toEqual(FILL_ME_IN);
+    expect(myFunc()()).toEqual(1);
+    expect( typeof myFunc() ).toEqual("function");
   });
 
   it("can use functions and closures", () =>{
@@ -121,7 +121,7 @@ describe("2. About Functions", () => {
     };
 
     const closure = myFunc();
-    expect(closure()).toEqual(FILL_ME_IN);
-    expect(closure()).toEqual(FILL_ME_IN);
+    expect(closure()).toEqual(1);
+    expect(closure()).toEqual(2);
   });
 });

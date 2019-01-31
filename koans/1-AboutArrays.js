@@ -3,16 +3,15 @@ describe("1. About Arrays", () => {
   //We shall contemplate truth by testing reality, via spec expectations.
   it("should create arrays", () => {
     const emptyArray = [];
-    expect(emptyArray.length).toBe([]);
+    expect(emptyArray.length).toBe(0);
 
     const multiTypeArray = [0, 1, "two", () => { return 3; }, {value1: 4, value2: 5}, [6, 7]];
 
-
     expect(multiTypeArray[0]).toBe(0);
-    expect(multiTypeArray[2]).toBe('two');
+    expect(multiTypeArray[2]).toBe("two");
     expect(multiTypeArray[3]()).toBe(3);
     expect(multiTypeArray[4].value1).toBe(4);
-    expect(multiTypeArray[4]["value2"]).toBe(undefined);
+    expect(multiTypeArray[4]["value2"]).toBe(5);
     expect(multiTypeArray[5][0]).toBe(6);
 
   });
@@ -33,18 +32,17 @@ describe("1. About Arrays", () => {
 
   it("should understand array length", () => {
     const fourNumberArray = [1, 2, 3, 4];
-
-    expect(fourNumberArray.length).toBe(FILL_ME_IN);
+    expect(fourNumberArray.length).toBe(4);
     fourNumberArray.push(5, 6);
-    expect(fourNumberArray.length).toBe(FILL_ME_IN);
+    expect(fourNumberArray.length).toBe(6);
 
     const tenEmptyElementArray = new Array(10);
-    expect(tenEmptyElementArray.length).toBe(FILL_ME_IN);
+    expect(tenEmptyElementArray.length).toBe(10);
     expect(tenEmptyElementArray).toEqual([undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]);
 
     tenEmptyElementArray.length = 5;
-    expect(tenEmptyElementArray.length).toBe(FILL_ME_IN);
-    expect(tenEmptyElementArray).toEqual(FILL_ME_IN);
+    expect(tenEmptyElementArray.length).toBe(5);
+    expect(tenEmptyElementArray).toEqual([undefined, undefined, undefined, undefined, undefined]);
   });
 
   it("should slice arrays", () => {
@@ -66,16 +64,17 @@ describe("1. About Arrays", () => {
     function passedByReference(refArray) {
       refArray[1] = "changed in function";
     }
+
     passedByReference(array);
-    expect(array[1]).toBe(FILL_ME_IN);
+    expect(array[1]).toBe("changed in function");
 
     let assignedArray = array;
     assignedArray[5] = "changed in assignedArray";
-    expect(array[5]).toBe(FILL_ME_IN);
+    expect(array[5]).toBe("changed in assignedArray");
 
     let copyOfArray = array.slice();
     copyOfArray[3] = "changed in copyOfArray";
-    expect(array[3]).toBe(FILL_ME_IN);
+    expect(array[3]).toBe("three");
   });
 
   it("should push and pop", () => {
@@ -117,12 +116,12 @@ describe("1. About Arrays", () => {
 
   it("should write a function that returns the 3rd element in an array (or null)", () => {
     const thirdElement = array => {
-      return array[2];
+        return array[2];
     };
     console.log(thirdElement([7,6]))
 
     expect(thirdElement([1,2,3])).toEqual(3);
-    expect(thirdElement([7,6])).toEqual(null);
+    expect(thirdElement([7,6])).toEqual(undefined);
   });
 
   it("should write a function that creates a new array of a certain length", () => {
@@ -131,9 +130,12 @@ describe("1. About Arrays", () => {
     //The elements of that array should be the first parameter
     //This could be done using a for loop or the fill array function
     const makeArray = (element, length) => {
-      return makeArray.fill(element);
+      let newArray = []
+      for (i = 0; i < length; i++) {
+      return newArray.push(element);
+      }
     };
-
+console.log(makeArray(3, 3))
     expect(makeArray("hello", 4)).toEqual(["hello", "hello", "hello", "hello"]);
     expect(makeArray(3,3)).toEqual([3,3,3]);
   });

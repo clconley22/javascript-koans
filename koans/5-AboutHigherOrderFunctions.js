@@ -79,9 +79,10 @@ describe("5. About Higher Order Functions", () => {
     // arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
     const arrayDiff = function(array1, array2) {
-      return array1.filter(() =>{
-        return FILL_ME_IN;
-      });
+      return[
+        ...array1.filter(x => array2.indexOf(x) === -1),
+        ...array2.filter(x => array1.indexOf(x) === -1),
+      ]
     };
 
     expect(arrayDiff([1,2,3], [1,2])).toEqual([3]);
@@ -95,11 +96,12 @@ describe("5. About Higher Order Functions", () => {
     // turn the array back into a string
 
     const jadenCase = function(string){
-       string = string.toLowercase().split(' ');
-      string.map(word => word.charAt(0).toUpperCase() + word.slice(1));
-      return string.join(" ");
+      return string
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
     };
-
     expect(jadenCase("How can mirrors be real if our eyes aren't real")).toEqual("How Can Mirrors Be Real If Our Eyes Aren't Real");
   });
 
@@ -107,10 +109,14 @@ describe("5. About Higher Order Functions", () => {
     const myFilter = function(arr, func){
       for(let i =0; i < arr.length; i++) {
         let arrayItem = arr[i];
-        return FILL_ME_IN;
+        if(func == true){
+          return arrayItem.push(arr[i])
+              console.log(arrayItem)
+        }
       }
-    };
 
+    };
+    console.log(myFilter([1,2,3], (i) => i > 2))
     expect(myFilter([1,2,3], (i) => i > 2)).toEqual([3]);
   });
 

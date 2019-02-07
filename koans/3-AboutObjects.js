@@ -74,13 +74,14 @@ describe("3. About Objects", () => {
     expect(simpleCircle.colour).toBe(undefined);
     expect(colouredCircle.colour).toBe("red");
 
-    Circle.prototype.describe = () => {
+    Circle.prototype.describe = function() {
       return "This circle has a radius of: " + this.radius;
     };
 
 
-    expect(simpleCircle.describe()).toBe("This circle has a radius of: undefined");
-    expect(colouredCircle.describe()).toBe("This circle has a radius of: undefined");
+
+    expect(simpleCircle.describe()).toBe("This circle has a radius of: 10");
+    expect(colouredCircle.describe()).toBe("This circle has a radius of: 5");
   });
 
   it("should create your own simple object", () => {

@@ -116,12 +116,10 @@ describe("1. About Arrays", () => {
 
   it("should write a function that returns the 3rd element in an array (or null)", () => {
     const thirdElement = array => {
-        return array[2];
+        return array[2] || null;
     };
-    console.log(thirdElement([7,6]))
-
     expect(thirdElement([1,2,3])).toEqual(3);
-    expect(thirdElement([7,6])).toEqual(undefined);
+    expect(thirdElement([7,6])).toEqual(null);
   });
 
   it("should write a function that creates a new array of a certain length", () => {
@@ -132,10 +130,10 @@ describe("1. About Arrays", () => {
     const makeArray = (element, length) => {
       let newArray = []
       for (i = 0; i < length; i++) {
-      return newArray.push(element);
+        newArray.push(element);
       }
+      return newArray;
     };
-console.log(makeArray(3, 3))
     expect(makeArray("hello", 4)).toEqual(["hello", "hello", "hello", "hello"]);
     expect(makeArray(3,3)).toEqual([3,3,3]);
   });

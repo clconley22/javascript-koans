@@ -107,24 +107,27 @@ describe("5. About Higher Order Functions", () => {
 
   it("can write your own filter function using a for loop", () => {
     const myFilter = function(arr, func){
+      let arrayToReturn = []
+
       for(let i =0; i < arr.length; i++) {
         let arrayItem = arr[i];
-        if(func == true){
-          return arrayItem.push(arr[i])
-              console.log(arrayItem)
+        if(func(arrayItem)){
+         arrayToReturn.push(arrayItem)
         }
       }
-
+        return arrayToReturn;
     };
-    console.log(myFilter([1,2,3], (i) => i > 2))
     expect(myFilter([1,2,3], (i) => i > 2)).toEqual([3]);
   });
 
   it("can write your own map function using forEach", () => {
+
     const myMap = function(arr, func){
+      let arrayToReturn = []
       arr.forEach(function(arrayItem) {
-        return func(i);
+        arrayToReturn.push(func(arrayItem));
       });
+      return arrayToReturn;
     };
 
     expect(myMap([1,2,3], (i) => i + 2)).toEqual([3,4,5]);

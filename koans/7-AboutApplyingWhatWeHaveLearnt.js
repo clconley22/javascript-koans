@@ -37,7 +37,7 @@ describe("7. About Applying What We Have Learnt", () => {
     let productsICanEat = [];
     let result = productsICanEat.filter(x => x.name)
     /* solve using filter() & some() / every() */
-
+console.log(productsICanEat.length)
     expect(productsICanEat.length).toBe(FILL_ME_IN);
   });
   /*********************************************************************************/
